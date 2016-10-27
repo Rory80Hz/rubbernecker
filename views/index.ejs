@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="stylesheets/grids-responsive-min.css">
 <!--<![endif]-->
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="stylesheets/pricing-old-ie.css">
+        <link rel="stylesheet" href="stylesheets/info-old-ie.css">
     <![endif]-->
     <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="stylesheets/pricing.css">
+        <link rel="stylesheet" href="stylesheets/info.css">
     <!--<![endif]-->
   </head>
   <body>
@@ -28,7 +28,7 @@
 <div class="l-content">
     <div class="info-tables pure-g">
 		<% story.forEach(function(story){ %>
-	    <%- include('story/summary', {story: story}); %>
+	    <%- include('story/started', {story: story}); %>
 	  	<% }); %>
     </div> <!-- end info-tables -->
     <div class="info-tables pure-g">
@@ -36,10 +36,15 @@
       <%- include('story/finished', {story: story}); %>
       <% }); %>
     </div> <!-- end info-tables -->
+    <div class="info-tables pure-g">
+    <% deliveredStory.forEach(function(story){ %>
+      <%- include('story/delivered', {story: story}); %>
+      <% }); %>
+    </div> <!-- end info-tables -->    
 
 <div class="footer l-box">
     <p>
-        <a href="#">Full Fat Pivotal Buzz</a>. All the javascripts all of the time.
+        <a href="https://www.pivotaltracker.com/n/projects/<%= projectId %>" target="_blank">Full Fat Pivotal Buzz</a>. All the javascripts all of the time.
     </p>
 </div>
 

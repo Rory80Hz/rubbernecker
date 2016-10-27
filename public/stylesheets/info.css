@@ -3,7 +3,7 @@
  * Most of these are inherited from Base, but I want to change a few.
  */
 body {
-    color: #526066;
+    color: #ecf0f1;
 }
 
 h2, h3 {
@@ -27,15 +27,6 @@ p {
 .l-box {
     padding: 0.5em 2em;
 }
-
-/*
- * -- MENU STYLES --
- * Make the menu have a very faint box-shadow.
- */
-.pure-menu {
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
-}
-
 
 /*
  * -- BANNER --
@@ -95,16 +86,24 @@ p {
  * -- PRICING TABLE HEADER COLORS --
  * Choose a different color based on the type of pricing table.
  */
-.info-table-free .info-table-header {
-    background: #519251;
+.info-table-started .info-table-header {
+    background: #34495e;
 }
 
-.info-table-biz .info-table-header {
-    background: #2c4985;
+.info-table-delivered .info-table-header {
+    background: #16a085;
 }
 
 .info-table-finished .info-table-header {
-    background: #e67e22;
+    background: #f39c12;
+}
+
+.info-table-worked-on .info-table-header {
+    background: #7f8c8d;
+}
+
+.info-table-review-by .info-table-header {
+    background: #95a5a6;
 }
 
 /*
@@ -123,25 +122,49 @@ p {
 
     }
 
-
-/*
- * -- PRICING TABLE PRICE --
- * Styles for the price and the corresponding <span>per month</span>
- */
-.info-table-price {
+.info-table-people {
     font-size: 6em;
     margin: 0.2em 0 0;
     font-weight: 100;
 }
-    .info-table-price span {
+    .info-table-people span {
         display: block;
         text-transform: uppercase;
         font-size: 0.2em;
-        padding-bottom: 2em;
+        padding-bottom: 1em;
         font-weight: 400;
         color: rgba(255, 255, 255, 0.5);
         *color: #fff;
     }
+
+.info-table-status {
+    font-size: 6em;
+    margin: 0.2em 0 0;
+    font-weight: 100;
+}
+    .info-table-status span {
+        display: block;
+        text-transform: uppercase;
+        font-size: 0.2em;
+        padding-top: 2em;
+        font-weight: 200;
+        color: rgba(255, 255, 255, 0.5);
+        *color: #fff;
+    }
+
+.info-table-story-id {
+    font-size: 6em;
+    margin: 0.2em 0 0;
+    font-weight: 100;
+}
+    .info-table-story-id span {
+        display: block;
+        text-transform: uppercase;
+        font-size: 0.2em;
+        font-weight: 200;
+        color: rgba(255, 255, 255, 0.5);
+        *color: #fff;
+    }    
 
 .information-head {
     color: black;
@@ -158,6 +181,15 @@ p {
     }
 
 
+.button-info {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #333;
+    border-radius: 2em;
+    font-weight: bold;
+    position: relative;
+    bottom: -1.5em;
+}
 
 /*
  * -- TABLET MEDIA QUERIES --
