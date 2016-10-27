@@ -20,7 +20,7 @@
   <body>
 <div class="banner">
     <h1 class="banner-head">
-        Life is too short.<br>
+        Life is short.<br>
         Pivotal is Loooooong.
     </h1>
 </div>
@@ -28,17 +28,17 @@
 <div class="l-content">
     <div class="info-tables pure-g">
 		<% story.forEach(function(story){ %>
-	    <%- include('story/started', {story: story}); %>
+	    <%- include('story/summary', {story: story, status: "started", message: "In Progress"}); %>
 	  	<% }); %>
     </div> <!-- end info-tables -->
     <div class="info-tables pure-g">
     <% finishedStory.forEach(function(story){ %>
-      <%- include('story/finished', {story: story}); %>
+      <%- include('story/summary', {story: story, status: "finished", message: "In Review"}); %>
       <% }); %>
     </div> <!-- end info-tables -->
     <div class="info-tables pure-g">
     <% deliveredStory.forEach(function(story){ %>
-      <%- include('story/delivered', {story: story}); %>
+      <%- include('story/summary', {story: story, status: "delivered", message: "In Approving"}); %>
       <% }); %>
     </div> <!-- end info-tables -->    
 

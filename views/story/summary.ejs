@@ -1,12 +1,12 @@
         <div class="pure-u-1 pure-u-md-1-3">
-            <div class="info-table info-table-finished">
+            <div class="info-table info-table-<%= status %>">
                 <div class="info-table-header">
                     <span class="info-table-story-id">
                         <span>#<%= story.id%></span>
                     </span>                
                     <h2><%= story.name%></h2>
                     <span class="info-table-status">
-                        <span>In Approving</span>
+                        <span><%= message %></span>
                     </span>
                 </div>
             </div>
