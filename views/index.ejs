@@ -31,7 +31,11 @@
 	    <%- include('story/summary', {story: story}); %>
 	  	<% }); %>
     </div> <!-- end info-tables -->
-
+    <div class="info-tables pure-g">
+    <% finishedStory.forEach(function(story){ %>
+      <%- include('story/finished', {story: story}); %>
+      <% }); %>
+    </div> <!-- end info-tables -->
 
 <div class="footer l-box">
     <p>

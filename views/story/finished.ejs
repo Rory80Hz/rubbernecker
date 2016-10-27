@@ -1,0 +1,26 @@
+        <div class="pure-u-1 pure-u-md-1-3">
+            <div class="info-table info-table-finished">
+                <div class="info-table-header">
+                    <h2><%= story.name%></h2>
+					<span class="info-table-price">
+						<span>In Review</span>
+                    </span>
+                </div>
+            </div>
+            <div class="info-table info-table-enterprise">
+            	<div class="info-table-header">
+            	<h2>Worked on by</h2>
+				<span class="info-table-price">
+						<span><%= story.workers.join(" | ");%></span>
+                    </span>
+                </div>
+            </div>
+            <div class="info-table info-table-biz">
+            	<div class="info-table-header">
+            	<h2>Sign Off By</h2>
+				<span class="info-table-price">
+						<span><%= story.signOffBy%></span>
+                    </span>				
+                </div>
+            </div>            
+        </div>

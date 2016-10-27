@@ -26,7 +26,7 @@ function getStorySummary(res) {
             function(callback) {
                 //Get the list of stories
                 var options = {
-                    url: 'https://www.pivotaltracker.com/services/v5/projects/' + res.app.get('pivotalProjectId') +'/stories?date_format=millis&with_state=started',
+                    url: 'https://www.pivotaltracker.com/services/v5/projects/' + res.app.get('pivotalProjectId') + '/stories?date_format=millis&with_state=started',
                     headers: {
                         'X-TrackerToken': res.app.get('pivotalApiKey')
                     }
@@ -43,7 +43,7 @@ function getStorySummary(res) {
             function(callback) {
                 //Get the list of stories
                 var options = {
-                    url: 'https://www.pivotaltracker.com/services/v5/projects/' + res.app.get('pivotalProjectId') +'/memberships',
+                    url: 'https://www.pivotaltracker.com/services/v5/projects/' + res.app.get('pivotalProjectId') + '/memberships',
                     headers: {
                         'X-TrackerToken': res.app.get('pivotalApiKey')
                     }
@@ -56,6 +56,23 @@ function getStorySummary(res) {
                         callback("Couldn't get people thanks to this crap" + response, null);
                     }
                 });
+            },
+            function(callback) {
+                //Get the list of finished stories
+                var options = {
+                    url: 'https://www.pivotaltracker.com/services/v5/projects/' + res.app.get('pivotalProjectId') + '/stories?date_format=millis&with_state=finished',
+                    headers: {
+                        'X-TrackerToken': res.app.get('pivotalApiKey')
+                    }
+                };
+
+                request(options, function getStories(error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        callback(null, JSON.parse(body));
+                    } else {
+                        callback("Couldn't get stories thanks to this crap: " + response, null);
+                    }
+                });
             }
         ],
         // Combine the results of the things above
@@ -63,8 +80,9 @@ function getStorySummary(res) {
             if (err) {
                 res.render('damn', { message: '┬──┬◡ﾉ(° -°ﾉ)', status: err, reason: "(╯°□°）╯︵ ┻━┻" });
             } else {
-
-                res.render('index', { title: 'Dem Stories', story: storyBones(results[0], results[1]) });
+                var startedStories = storyBones(results[0], results[1]);
+                var finishedStories = storyBones(results[2], results[1]);
+                res.render('index', { title: 'Dem Stories', story: startedStories, finishedStory: finishedStories });
             }
             // the results array will equal ['one','two'] even though
             // the second function had a shorter timeout.
