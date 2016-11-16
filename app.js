@@ -63,4 +63,10 @@ app.set('pivotalApiKey', pivotalApiKey);
 var pivotalProjectId = process.env.PIVOTAL_PROJECT_ID || 'You need to set a project Id';
 app.set('pivotalProjectId', pivotalProjectId);
 
+var reviewSlotsLimit = process.env.REVIEW_SLOTS_LIMIT || 4;
+app.set('reviewSlotsLimit', reviewSlotsLimit);
+
+var signOffSlotsLimit = process.env.REVIEW_SLOTS_LIMIT || 5;
+app.set('signOffSlotsLimit', signOffSlotsLimit);
+
 module.exports = app;

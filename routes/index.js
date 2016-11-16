@@ -1,10 +1,11 @@
+
 var express = require('express');
 var router = express.Router();
 var request = require('request');
 var async = require('async');
 
 function getStoryViewModel(storyDetail, membershipInfo) {
-    var bones = storyDetail.map(function(story) {
+    var views = storyDetail.map(function(story) {
         var workers = story.owner_ids.map(function(worker_id) {
             return mapPersonFromId(worker_id, membershipInfo);
         });
@@ -12,7 +13,7 @@ function getStoryViewModel(storyDetail, membershipInfo) {
         return { id: story.id, name: story.name, signOffBy: signOffBy, workers: workers }
     });
 
-    return bones;
+    return views;
 }
 
 function mapPersonFromId(id, membershipInfo) {
@@ -56,7 +57,7 @@ function getStorySummary(res) {
                     if (!error && response.statusCode == 200) {
                         callback(null, JSON.parse(body));
                     } else {
-                        callback("Couldn't get people thanks to this crap" + response, null);
+                        callback("Couldn't get people thanks to this crap" + response.statusCode, null);
                     }
                 });
             },
@@ -75,7 +76,10 @@ function getStorySummary(res) {
                 var startedStories = getStoryViewModel(results[0], results[1]);
                 var finishedStories = getStoryViewModel(results[2], results[1]);
                 var deliveredStories = getStoryViewModel(results[3], results[1]);
-                res.render('index', { projectId: res.app.get('pivotalProjectId'), story: startedStories, finishedStory: finishedStories, deliveredStory: deliveredStories });
+                var reviewSlotsFull = res.app.get('reviewSlotsLimit') <= finishedStories.length;
+                var approveSlotsFull = res.app.get('signOffSlotsLimit') <= finishedStories.length;
+
+                res.render('index', { projectId: res.app.get('pivotalProjectId'), story: startedStories, finishedStory: finishedStories, deliveredStory: deliveredStories, reviewSlotsFull: reviewSlotsFull, approveSlotsFull:approveSlotsFull });
             }
         });
 }
