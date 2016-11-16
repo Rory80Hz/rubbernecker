@@ -15,27 +15,27 @@
       <div class="page-header">
         <h1>Current Stories</h1>
       </div>
-    <div class="row">
-    <% if (approveSlotsFull) { %>
-    <p class="text-warning">
-      <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">I Am a sad panda. I will never find any slots.
-    </p>
-    <% } %>       
+    <div class="row">     
     <% deliveredStory.forEach(function(story){ %>
       <%- include('story/summary', {story: story, status: "delivered", message: "In Approving"}); %>
       <% }); %>
     </div>
     <div class="row">
-    <% if (reviewSlotsFull) { %>
+    <% if (approveSlotsFull) { %>
     <p class="text-warning">
-      <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">I Am a sad panda. I will never find any slots.
+      <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">I Am a sad panda. I will never find any slots for acceptance.
     </p>
-    <% } %>       
+    <% } %>    
     <% finishedStory.forEach(function(story){ %>
       <%- include('story/summary', {story: story, status: "finished", message: "In Review"}); %>
       <% }); %>
     </div>    
     <div class="row">
+    <% if (reviewSlotsFull) { %>
+    <p class="text-warning">
+      <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">I Am a sad panda.  I will never find any slots for review.
+    </p>
+    <% } %>    
     <% story.forEach(function(story){ %>
       <%- include('story/summary', {story: story, status: "started", message: "In Progress"}); %>
       <% }); %>
