@@ -3,6 +3,9 @@
             <div class="panel-heading">
               <h3 class="panel-title"><%= story.name%></h3>
               <%= message %>
+              <% if (story.workers.length === 0) { %>
+                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+              <% } %>
             </div>
             <div class="panel-body">
             <% if (story.workers.length === 0) { %>
