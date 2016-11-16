@@ -15,14 +15,14 @@
       <div class="page-header">
         <h1>Current Stories</h1>
       </div>
-    <div class="row">     
+    <div class="row">
     <% deliveredStory.forEach(function(story){ %>
       <%- include('story/summary', {story: story, status: "delivered", message: "In Approving"}); %>
       <% }); %>
     </div>
     <div class="row">
     <% if (approveSlotsFull) { %>
-    <p class="text-warning">
+    <p class="text-warning lead">
       <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">I Am a sad panda. I will never find any slots for acceptance.
     </p>
     <% } %>    
@@ -32,7 +32,7 @@
     </div>    
     <div class="row">
     <% if (reviewSlotsFull) { %>
-    <p class="text-warning">
+    <p class="text-warning lead">
       <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">I Am a sad panda.  I will never find any slots for review.
     </p>
     <% } %>    
@@ -42,11 +42,11 @@
     </div>
 
   
-      <div class="footer">
-          <p>
-              <a href="https://www.pivotaltracker.com/n/projects/<%= projectId %>" target="_blank">Full Fat Pivotal Buzz</a>. All the javascripts all of the time.
-          </p>
-      </div>      
+    <footer class="footer">
+        <p>
+            <a href="https://www.pivotaltracker.com/n/projects/<%= projectId %>" target="_blank">Full Fat Pivotal Buzz</a>. All the javascripts all of the time.
+        </p>
+    </footer>
     </div><!-- /container -->
   </body>
 </html>
