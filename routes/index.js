@@ -77,7 +77,7 @@ function getStorySummary(res) {
                 var finishedStories = getStoryViewModel(results[2], results[1]);
                 var deliveredStories = getStoryViewModel(results[3], results[1]);
                 var reviewSlotsFull = res.app.get('reviewSlotsLimit') <= finishedStories.length;
-                var approveSlotsFull = res.app.get('signOffSlotsLimit') <= finishedStories.length;
+                var approveSlotsFull = res.app.get('signOffSlotsLimit') <= deliveredStories.length;
 
                 res.render('index', { projectId: res.app.get('pivotalProjectId'), story: startedStories, finishedStory: finishedStories, deliveredStory: deliveredStories, reviewSlotsFull: reviewSlotsFull, approveSlotsFull:approveSlotsFull });
             }
