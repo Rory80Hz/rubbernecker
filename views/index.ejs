@@ -1,52 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Pivotal Story Summaries">
     <title>Pivotal Summary Viewer</title>
-    <link rel="stylesheet" href="stylesheets/pure-min.css">
-<!--[if lte IE 8]>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
-<![endif]-->
-<!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="stylesheets/grids-responsive-min.css">
-<!--<![endif]-->
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="stylesheets/info-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="stylesheets/info.css">
-    <!--<![endif]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/rubbernecker.css">
+
   </head>
   <body>
-<div class="banner">
-    <h1 class="banner-head">
-        Life is short.<br>
-        Pivotal is Loooooong.
-    </h1>
-</div>
-
-<div class="l-content">
-    <div class="info-tables pure-g">
-		<% story.forEach(function(story){ %>
-	    <%- include('story/summary', {story: story, status: "started", message: "In Progress"}); %>
-	  	<% }); %>
-    </div> <!-- end info-tables -->
-    <div class="info-tables pure-g">
-    <% finishedStory.forEach(function(story){ %>
-      <%- include('story/summary', {story: story, status: "finished", message: "In Review"}); %>
-      <% }); %>
-    </div> <!-- end info-tables -->
-    <div class="info-tables pure-g">
+    <div class="container theme-showcase" role="main">
+      <div class="page-header">
+        <h1>Stories in Play</h1>
+      </div>
+    <div class="row">
     <% deliveredStory.forEach(function(story){ %>
       <%- include('story/summary', {story: story, status: "delivered", message: "In Approving"}); %>
       <% }); %>
-    </div> <!-- end info-tables -->    
+    </div>
+    <div class="row">
+    <% finishedStory.forEach(function(story){ %>
+      <%- include('story/summary', {story: story, status: "finished", message: "In Review"}); %>
+      <% }); %>
+    </div>    
+    <div class="row">
+    <% story.forEach(function(story){ %>
+      <%- include('story/summary', {story: story, status: "started", message: "In Progress"}); %>
+      <% }); %>
+    </div>
 
-<div class="footer l-box">
-    <p>
-        <a href="https://www.pivotaltracker.com/n/projects/<%= projectId %>" target="_blank">Full Fat Pivotal Buzz</a>. All the javascripts all of the time.
-    </p>
-</div>
-
+  
+      <div class="footer">
+          <p>
+              <a href="https://www.pivotaltracker.com/n/projects/<%= projectId %>" target="_blank">Full Fat Pivotal Buzz</a>. All the javascripts all of the time.
+          </p>
+      </div>      
+    </div><!-- /container -->
   </body>
 </html>

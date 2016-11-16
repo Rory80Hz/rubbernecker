@@ -33,7 +33,7 @@ function getStoriesByStatus(res, callback, status) {
         if (!error && response.statusCode == 200) {
             callback(null, JSON.parse(body));
         } else {
-            callback("Couldn't get stories thanks to this crap: " + response, null);
+            callback("Couldn't get stories thanks to this crap: " + response.statusCode, null);
         }
     });
 }
