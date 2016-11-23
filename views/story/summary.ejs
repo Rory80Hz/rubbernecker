@@ -1,32 +1,57 @@
-        <div class="col-sm-6">
-          <div class="panel panel-<%= status %>">
-            <div class="panel-heading">
-              <h3 class="panel-title"><%= story.name%></h3>
-              <%= message %> for <%= story.daysInProgress %> day<% if (story.daysInProgress != 1) { %>s<% } %>
-              <% if (story.workers.length === 0) { %>
-                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
-              <% } %>
-            </div>
-            <div class="panel-body">
-            <% if (story.workers.length === 0) { %>
-              <p>
-                <h4 class="text-danger">Nobody is working on this</h4>
-                Sad Times.
-              </p>
-            <% } %>
-            <% if (story.workers.length > 0) { %>                
-            <p>
-              <h4>Worked On By</h4>
-                <%= story.workers.join(" | ");%>
-                </p>
-            <% } %>
-                <p>            
-              <h4>Sign Off By</h4>
-                <%= story.signOffBy%>
-                </p>
-                <p>
-                    <a href="https://www.pivotaltracker.com/story/show/<%= story.id%>" target="_blank" class="btn btn-primary btn-lg active" role="button">View Story</a>
-                </p>
-            </div>
-          </div>
+<div class="story">
+    <div class="panel panel-<%= status %>">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <%= story.name %>
+            </h3>
         </div>
+
+        <div class="panel-body">
+            <% if (story.workers.length === 0) { %>
+                <h4 class="text-danger">
+                    <% if (story.workers.length === 0) { %>
+                        <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                    <% } %>
+                    Nobody is working on this
+
+                    <br>
+                    <small>Sad times.</small>
+                </h4>
+            <% } %>
+
+            <% if (story.workers.length > 0) { %>
+                <div>
+                    <h4>Assignee<%= story.workers.length != 1 ? "s" : "" %></h4>
+                    <p><%= story.workers.join(" | "); %></p>
+                </div>
+            <% } %>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#<%= story.id %>-info" data-toggle="collapse" aria-expanded="false" aria-controls="<%= story.id %>-info">
+                        More info
+                    </a>
+                </div>
+
+                <div class="col-md-6 text-right">
+                    <a href="https://www.pivotaltracker.com/story/show/<%= story.id %>" target="_blank">
+                        View Story
+                    </a>
+                </div>
+            </div>
+
+            <div id="<%= story.id %>-info" class="collapse">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Status</th>
+                        <td><%= message %></td>
+                    </tr>
+                    <tr>
+                        <th>Requester</th>
+                        <td><%= story.signOffBy %></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
