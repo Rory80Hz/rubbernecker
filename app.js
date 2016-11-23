@@ -69,4 +69,7 @@ app.set('reviewSlotsLimit', reviewSlotsLimit);
 var signOffSlotsLimit = process.env.REVIEW_SLOTS_LIMIT || 5;
 app.set('signOffSlotsLimit', signOffSlotsLimit);
 
+var supportStoryId = process.env.SUPPORT_STORY_ID || null;
+app.set('supportStoryId', supportStoryId);
+
 module.exports = app;
