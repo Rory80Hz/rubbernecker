@@ -104,3 +104,6 @@ Temporary Items
 
 # Cloud Foundry Specific Things
 manifest.yml
+
+# IntelliJ
+.idea/
