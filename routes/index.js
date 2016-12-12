@@ -18,7 +18,11 @@ function getStoryViewModel(storyDetail, membershipInfo) {
 
 function mapPersonFromId(id, membershipInfo) {
     var picked = membershipInfo.find(membership => membership.person.id === id);
-    return picked.person.name;
+    var name = "Unknown/Inactive User";
+    if(picked) {
+        name = picked.person.name;
+    }
+    return name;
 }
 
 function getStoriesByStatus(res, callback, status) {
