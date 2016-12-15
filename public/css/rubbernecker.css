@@ -73,3 +73,9 @@
 .panel-rejected > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bdc3c7;
 }
+.story {
+  position: relative;
+}
+.story .panel-footer .sticker img {
+  max-width: 100%;
+}

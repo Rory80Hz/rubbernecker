@@ -53,5 +53,20 @@
                 </table>
             </div>
         </div>
+
+        <% if (typeof overLimit !== 'undefined' && overLimit) { %>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-sm-2 sticker">
+                        <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">
+                    </div>
+
+                    <div class="col-sm-10 description">
+                        I am a sad panda.<br/>
+                        I will never find any slots for <%= status == 'finished' ? 'review' : 'acceptance' %>.
+                    </div>
+                </div>
+            </div>
+        <% } %>
     </div>
 </div>

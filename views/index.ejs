@@ -35,14 +35,7 @@
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Doing</h2>
-
-            <% if (reviewSlotsFull) { %>
-                <p class="text-warning lead">
-                    <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">&nbsp
-                    I Am a sad panda. I will never find any slots for review.
-                </p>
-            <% } %>
+            <h2>Doing <small><%= story.length %></small></h2>
 
             <% story.forEach(function(story) { %>
                 <%- include('story/summary', {story: story, status: "started", message: "In Progress"}); %>
@@ -50,25 +43,38 @@
         </div>
 
         <div class="col-md-4">
-            <h2>Reviewing</h2>
+            <h2>
+                Reviewing
+                <small class="<%= reviewSlotsFull ? 'text-danger' : '' %>">
+                    <%= finishedStory.length %>/<%= reviewSlotsLimit %>
+                </small>
+            </h2>
 
-            <% if (approveSlotsFull) { %>
-                <p class="text-warning lead">
-                    <img src="/images/sad_panda.gif" alt="Sad Panda" class="img-circle">
-                    I Am a sad panda. I will never find any slots for acceptance.
-                </p>
-            <% } %>
-
-            <% finishedStory.forEach(function(story) { %>
-                <%- include('story/summary', {story: story, status: "finished", message: "In Review"}); %>
+            <% finishedStory.forEach(function(story, key) { %>
+                <%- include('story/summary', {
+                    story: story,
+                    status: "finished",
+                    message: "In Review",
+                    overLimit: reviewSlotsLimit < (key + 1)
+                }); %>
             <% }); %>
         </div>
 
         <div class="col-md-4">
-            <h2>Approving</h2>
+            <h2>
+                Approving
+                <small class="<%= approveSlotsFull ? 'text-danger' : '' %>">
+                    <%= deliveredStory.length %>/<%= approveSlotsLimit %>
+                </small>
+            </h2>
 
-            <% deliveredStory.forEach(function(story) { %>
-                <%- include('story/summary', {story: story, status: "delivered", message: "In Approving"}); %>
+            <% deliveredStory.forEach(function(story, key) { %>
+                <%- include('story/summary', {
+                    story: story,
+                    status: "delivered",
+                    message: "In Approving",
+                    overLimit: approveSlotsLimit < (key + 1)
+                }); %>
             <% }); %>
         </div>
     </div>
