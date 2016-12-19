@@ -70,6 +70,9 @@ function getStorySummary(res) {
             },
             function(callback) {
                 getStoriesByStatus(res, callback, "delivered");
+            },
+            function(callback) {
+                getStoriesByStatus(res, callback, "rejected");
             }
         ],
         // Combine the results of the things above
@@ -80,10 +83,11 @@ function getStorySummary(res) {
                 var startedStories = getStoryViewModel(results[0], results[1]);
                 var finishedStories = getStoryViewModel(results[2], results[1]);
                 var deliveredStories = getStoryViewModel(results[3], results[1]);
+                var rejectedStories =  getStoryViewModel(results[4], results[1]);
                 var reviewSlotsFull = res.app.get('reviewSlotsLimit') <= finishedStories.length;
                 var approveSlotsFull = res.app.get('signOffSlotsLimit') <= deliveredStories.length;
 
-                res.render('index', { projectId: res.app.get('pivotalProjectId'), story: startedStories, finishedStory: finishedStories, deliveredStory: deliveredStories, reviewSlotsFull: reviewSlotsFull, approveSlotsFull:approveSlotsFull });
+                res.render('index', { projectId: res.app.get('pivotalProjectId'), story: startedStories, finishedStory: finishedStories, deliveredStory: deliveredStories, rejectedStory: rejectedStories, reviewSlotsFull: reviewSlotsFull, approveSlotsFull:approveSlotsFull });
             }
         });
 }

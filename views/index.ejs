@@ -40,7 +40,11 @@
       <%- include('story/summary', {story: story, status: "started", message: "In Progress"}); %>
       <% }); %>
     </div>
-
+    <div class="row">  
+    <% rejectedStory.forEach(function(story){ %>
+      <%- include('story/summary', {story: story, status: "rejected", message: "Rejected"}); %>
+      <% }); %>
+    </div>
   
     <footer class="footer">
         <p>
