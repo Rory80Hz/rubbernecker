@@ -2,7 +2,7 @@
           <div class="panel panel-<%= status %>">
             <div class="panel-heading">
               <h3 class="panel-title"><%= story.name%></h3>
-              <%= message %>
+              <%= message %> for <%= story.daysInProgress %> Day<% if (story.daysInProgress != 1) { %>s<% } %>
               <% if (story.workers.length === 0) { %>
                 <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
               <% } %>
@@ -11,16 +11,13 @@
             <% if (story.workers.length === 0) { %>
               <p>
                 <h4 class="text-danger">Nobody is working on this</h4>
-                <br/>
-                Days in current state: <%= story.daysInProgress %>                
+                Sad Times.
               </p>
             <% } %>
             <% if (story.workers.length > 0) { %>                
             <p>
               <h4>Worked On By</h4>
                 <%= story.workers.join(" | ");%>
-                <br/>
-                Days in current state: <%= story.daysInProgress %>
                 </p>
             <% } %>
                 <p>            
