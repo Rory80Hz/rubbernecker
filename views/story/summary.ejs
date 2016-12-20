@@ -6,6 +6,9 @@
               <% if (story.workers.length === 0) { %>
                 <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
               <% } %>
+              <% if (story.blocked) { %>
+                <span class="blocked">BLOCKED</span>
+              <% } %>
             </div>
             <div class="panel-body">
             <% if (story.workers.length === 0) { %>
