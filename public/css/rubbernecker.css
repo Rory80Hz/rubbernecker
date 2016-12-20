@@ -73,3 +73,26 @@
 .panel-rejected > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #bdc3c7;
 }
+
+.blocked {
+  float: right;
+  color: red;
+  font-weight: bold;
+  -webkit-animation: blink 1s steps(5, start) infinite;
+  -moz-animation:    blink 1s steps(5, start) infinite;
+  -o-animation:      blink 1s steps(5, start) infinite;
+  animation:         blink 1s steps(5, start) infinite;
+}
+
+@-webkit-keyframes blink {
+  to { visibility: hidden; }
+}
+@-moz-keyframes blink {
+  to { visibility: hidden; }
+}
+@-o-keyframes blink {
+  to { visibility: hidden; }
+}
+@keyframes blink {
+  to { visibility: hidden; }
+}
