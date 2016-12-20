@@ -4,10 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var utils = require('./lib/utils.js')
 var routes = require('./routes/index');
 
 var app = express();
+
+var useAuth = process.env.USE_AUTH || 'false'
+if (useAuth === 'true') {
+  var username = process.env.USERNAME
+  var password = process.env.PASSWORD
+  app.use(utils.basicAuth(username, password))
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -17,7 +24,9 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -55,8 +64,8 @@ app.use(function(err, req, res, next) {
 });
 
 /**
-* Set API Key based on Environment variable
-**/
+ * Set API Key based on Environment variable
+ **/
 var pivotalApiKey = process.env.PIVOTAL_API_KEY || 'You need to set a key';
 app.set('pivotalApiKey', pivotalApiKey);
 
