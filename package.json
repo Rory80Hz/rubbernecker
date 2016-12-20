@@ -10,11 +10,12 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "~2.4.1",
-    "express": "~4.13.4",
+    "express": "~4.14.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "cfenv": "1.0.3",
     "request": "2.76.0",
-    "async": "2.1.2"
+    "async": "2.1.2",
+    "find-business-days-in-range":"1.0.2"
   }
 }
