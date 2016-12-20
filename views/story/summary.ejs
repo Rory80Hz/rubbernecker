@@ -11,13 +11,16 @@
             <% if (story.workers.length === 0) { %>
               <p>
                 <h4 class="text-danger">Nobody is working on this</h4>
-                Sad times.
+                <br/>
+                Days in current state: <%= story.daysInProgress %>                
               </p>
             <% } %>
             <% if (story.workers.length > 0) { %>                
             <p>
-              <h4>Worked On By </h4>
+              <h4>Worked On By</h4>
                 <%= story.workers.join(" | ");%>
+                <br/>
+                Days in current state: <%= story.daysInProgress %>
                 </p>
             <% } %>
                 <p>            
