@@ -2,7 +2,7 @@
           <div class="panel panel-<%= status %>">
             <div class="panel-heading">
               <h3 class="panel-title"><%= story.name%></h3>
-              <%= message %> for <%= story.daysInProgress %> Day<% if (story.daysInProgress != 1) { %>s<% } %>
+              <%= message %> for <%= story.daysInProgress %> day<% if (story.daysInProgress != 1) { %>s<% } %>
               <% if (story.workers.length === 0) { %>
                 <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
               <% } %>
