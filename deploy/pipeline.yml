@@ -1,0 +1,13 @@
+resources:
+- name: rubbernecker
+  type: git
+  source:
+    uri: https://github.com/Rory80Hz/rubbernecker
+    branch: master
+
+jobs:
+- name: test-app
+  plan:
+  - get: rubbernecker
+  - task: tests
+    file: rubbernecker/deploy/build.yml
